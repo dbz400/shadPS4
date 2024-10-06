@@ -151,6 +151,7 @@ const VectorIds& GetAttributeType(EmitContext& ctx, AmdGpu::NumberFormat fmt) {
     switch (fmt) {
     case AmdGpu::NumberFormat::Float:
     case AmdGpu::NumberFormat::Unorm:
+    case AmdGpu::NumberFormat::Ubnorm:
     case AmdGpu::NumberFormat::Snorm:
     case AmdGpu::NumberFormat::SnormNz:
     case AmdGpu::NumberFormat::Sscaled:
@@ -172,6 +173,7 @@ EmitContext::SpirvAttribute EmitContext::GetAttributeInfo(AmdGpu::NumberFormat f
     switch (fmt) {
     case AmdGpu::NumberFormat::Float:
     case AmdGpu::NumberFormat::Unorm:
+    case AmdGpu::NumberFormat::Ubnorm:
     case AmdGpu::NumberFormat::Snorm:
     case AmdGpu::NumberFormat::SnormNz:
     case AmdGpu::NumberFormat::Sscaled:
