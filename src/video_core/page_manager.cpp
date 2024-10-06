@@ -146,7 +146,6 @@ struct PageManager::Impl {
         DWORD prot = allow_write ? PAGE_READWRITE : PAGE_READONLY;
         DWORD old_prot{};
         BOOL result = VirtualProtect(std::bit_cast<LPVOID>(address), size, prot, &old_prot);
-        ASSERT_MSG(result != 0, "Region protection failed");
 #else
         mprotect(reinterpret_cast<void*>(address), size,
                  PROT_READ | (allow_write ? PROT_WRITE : 0));
