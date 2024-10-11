@@ -297,6 +297,8 @@ set(LIBC_SOURCES src/core/libraries/libc_internal/libc_internal.cpp
 
 set(DIALOGS_LIB src/core/libraries/dialogs/error_dialog.cpp
                 src/core/libraries/dialogs/error_dialog.h
+                src/core/libraries/dialogs/ime_dialog_ui.cpp
+                src/core/libraries/dialogs/ime_dialog_ui.h
                 src/core/libraries/dialogs/ime_dialog.cpp
                 src/core/libraries/dialogs/ime_dialog.h
                 src/core/libraries/dialogs/error_codes.h
@@ -322,6 +324,10 @@ set(RANDOM_LIB src/core/libraries/random/random.cpp
 
 set(USBD_LIB src/core/libraries/usbd/usbd.cpp
              src/core/libraries/usbd/usbd.h
+)
+
+set(FIBER_LIB src/core/libraries/fiber/fiber.cpp
+              src/core/libraries/fiber/fiber.h
 )
 
 set(NP_LIBS src/core/libraries/np_manager/np_manager.cpp
@@ -374,6 +380,8 @@ set(COMMON src/common/logging/backend.cpp
            src/common/debug.h
            src/common/decoder.cpp
            src/common/decoder.h
+           src/common/discord_rpc_handler.cpp
+           src/common/discord_rpc_handler.h
            src/common/elf_info.h
            src/common/endian.h
            src/common/enum.h
@@ -462,6 +470,7 @@ set(CORE src/core/aerolib/stubs.cpp
          ${USBD_LIB}
          ${MISC_LIBS}
          ${DIALOGS_LIB}
+         ${FIBER_LIB}
          ${DEV_TOOLS}
          src/core/debug_state.cpp
          src/core/debug_state.h
@@ -691,6 +700,8 @@ set(QT_GUI src/qt_gui/about_dialog.cpp
            src/qt_gui/game_grid_frame.h
            src/qt_gui/game_install_dialog.cpp
            src/qt_gui/game_install_dialog.h
+           src/qt_gui/install_dir_select.cpp
+           src/qt_gui/install_dir_select.h
            src/qt_gui/pkg_viewer.cpp
            src/qt_gui/pkg_viewer.h
            src/qt_gui/trophy_viewer.cpp
@@ -858,3 +869,6 @@ if (UNIX AND NOT APPLE)
         target_link_libraries(shadps4 PRIVATE ${OPENSSL_LIBRARIES})
     endif()
 endif()
+
+# Discord RPC
+target_link_libraries(shadps4 PRIVATE discord-rpc)
