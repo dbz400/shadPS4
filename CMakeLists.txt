@@ -282,6 +282,14 @@ set(SYSTEM_LIBS src/core/libraries/system/commondialog.cpp
                 src/core/libraries/audio3d/audio3d_error.h
                 src/core/libraries/audio3d/audio3d_impl.cpp
                 src/core/libraries/audio3d/audio3d_impl.h
+                src/core/libraries/ime/ime.cpp
+                src/core/libraries/ime/ime.h
+                src/core/libraries/game_live_streaming/gamelivestreaming.cpp
+                src/core/libraries/game_live_streaming/gamelivestreaming.h
+                src/core/libraries/remote_play/remoteplay.cpp
+                src/core/libraries/remote_play/remoteplay.h
+                src/core/libraries/share_play/shareplay.cpp
+                src/core/libraries/share_play/shareplay.h
 )
 
 set(VIDEOOUT_LIB src/core/libraries/videoout/buffer.h
@@ -872,3 +880,11 @@ endif()
 
 # Discord RPC
 target_link_libraries(shadps4 PRIVATE discord-rpc)
+
+# Install rules
+install(TARGETS shadps4 BUNDLE DESTINATION .)
+
+if (ENABLE_QT_GUI AND CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    install(FILES ".github/shadps4.desktop" DESTINATION "share/applications")
+    install(FILES ".github/shadps4.png" DESTINATION "share/icons/hicolor/512x512/apps")
+endif()
