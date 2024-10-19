@@ -31,9 +31,9 @@ void Scheduler::BeginRendering(const RenderState& new_state) {
     render_state = new_state;
 
     const auto witdh =
-        render_state.width != std::numeric_limits<u32>::max() ? render_state.width : 1;
+        render_state.width != std::numeric_limits<u32>::max() ? render_state.width : 160;
     const auto height =
-        render_state.height != std::numeric_limits<u32>::max() ? render_state.height : 1;
+        render_state.height != std::numeric_limits<u32>::max() ? render_state.height : 90;
 
     const vk::RenderingInfo rendering_info = {
         .renderArea =
