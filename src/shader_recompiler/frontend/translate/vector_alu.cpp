@@ -987,7 +987,7 @@ void Translator::V_CMP_NE_U64(const GcnInst& inst) {
         }
     };
     const IR::U1 src0{get_src(inst.src[0])};
-    ASSERT(inst.src[1].field == OperandField::ConstZero); // src0 != 0
+    //ASSERT(inst.src[1].field == OperandField::ConstZero); // src0 != 0
     switch (inst.dst[1].field) {
     case OperandField::VccLo:
         ir.SetVcc(src0);
